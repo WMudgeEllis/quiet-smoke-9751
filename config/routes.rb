@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :doctors
   end
   resources :doctor_patients
+  resources :patients
 end
