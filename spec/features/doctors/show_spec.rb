@@ -8,7 +8,7 @@ RSpec.describe 'doctor show page' do
     patient_1 = doctor.patients.create!(name: "Monst3r", age: 5)
     patient_2 = doctor.patients.create!(name: "Roberto", age: 35)
 
-    visit doctor_path(doctor)
+    visit hospital_doctor_path(hospital, doctor)
 
     expect(page).to have_content(hospital.name)
     expect(page).to have_content(doctor.name)
@@ -27,13 +27,13 @@ RSpec.describe 'doctor show page' do
     patient_1 = doctor.patients.create!(name: "Monst3r", age: 5)
     patient_2 = doctor.patients.create!(name: "Roberto", age: 35)
 
-    visit doctor_path(doctor)
+    visit hospital_doctor_path(hospital, doctor)
 
     within("#patient-#{patient_1.id}") do
       click_button 'remove patient'
     end
 
-    expect(current_path).to eq(doctor_path(doctor))
+    expect(current_path).to eq(hospital_doctor_path(hospital, doctor))
     expect(page).to_not have_content(patient_1.name)
   end
 end
