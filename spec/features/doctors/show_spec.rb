@@ -10,6 +10,7 @@ RSpec.describe 'doctor show page' do
 
     visit doctor_path(doctor)
 
+    expect(page).to have_content(hospital.name)
     expect(page).to have_content(doctor.name)
     expect(page).to have_content(doctor.specialty)
     expect(page).to have_content(doctor.university)
